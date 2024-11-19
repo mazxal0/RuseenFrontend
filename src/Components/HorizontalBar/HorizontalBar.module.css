@@ -1,0 +1,30 @@
+.scrollContainer {
+    display: flex;
+    overflow-x: auto;
+    gap: 16px;
+
+    scroll-behavior: smooth;
+
+
+    user-select: none;
+    margin-top: 1vh;
+    padding-left: 20px;
+}
+
+.scrollContainer.active {
+    cursor: pointer;
+}
+
+.scrollContainer::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollItem {
+    flex: 0 0 auto;
+    background-color: #1f1f1f;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}

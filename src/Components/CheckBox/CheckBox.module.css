@@ -1,0 +1,14 @@
+.checkbox {
+    width: 20px;
+    height: 20px;
+    border-radius: 6px;
+    margin-left: 10px;
+}
+
+.container {
+    display: flex;
+}
+
+.text {
+    margin-left: 10px;
+}

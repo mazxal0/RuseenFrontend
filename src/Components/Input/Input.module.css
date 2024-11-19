@@ -1,0 +1,19 @@
+.input {
+    border: none;
+    padding: 15px;
+    border-radius: 14px;
+    color: var(--white);
+    background-color: var(--background-primary);
+}
+
+@media (min-width: 480px) {
+    .input {
+        width: 25vw;
+    }
+}
+
+@media(max-width: 480px){
+    .input {
+        width: 90%;
+    }
+}

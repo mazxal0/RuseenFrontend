@@ -1,0 +1,34 @@
+.header {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--background-primary);
+    height: 6vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.text {
+    margin-left: 15px;
+}
+
+.blue-text {
+    color: var(--blue-color);
+}
+
+.topic {
+    margin-top: 8vh;
+    margin-left: 20px;
+    font-size: 14px;
+}
+
+.buttons_container {
+
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    margin: auto 20px 10px 20px;
+
+}
