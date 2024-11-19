@@ -5,7 +5,6 @@ import styles from './HorizontalBar.module.css'; // Ваш CSS для стиле
 import SectionsData from "../../DataAssets/Sections.Data.json";
 
 import surveyStore from "@/Store/SurveyStore";
-import Link from "next/link";
 
 const HorizontalBar: React.FC = () => {
     const scrollContainerRef = useRef<HTMLDivElement | null>(null);
@@ -53,8 +52,6 @@ const HorizontalBar: React.FC = () => {
         const x = e.touches[0].clientX - startX;
         container.scrollLeft = scrollLeft - x;
     };
-
-
 
     return (
         <div

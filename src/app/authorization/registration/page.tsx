@@ -35,7 +35,7 @@ const Registration = () => {
     const sendUserData = async (event: React.FormEvent) => {
         event.preventDefault();
         try {
-            const response = await axios.post('http://localhost:5000/user/registration', userData);
+            const response = await axios.post('https://backendruseensite.netlify.app/user/registration', userData);
             console.log('data');
             if( response.data.message === 'Неверный пароль') {
                 setWrongPassword(true);
