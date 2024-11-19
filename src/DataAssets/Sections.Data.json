@@ -1,19 +1,28 @@
 {
   "names": [
-    "Общие вопросы",
-    "Маршрут",
-    "Проживание",
-    "Питание",
-    "Развлечения",
-    "Empty",
-    "Empty2",
-    "Empty3",
-    "Empty4",
-    "Empty5",
-    "Empty6",
-    "Empty7",
-    "Empty8",
-    "Empty9",
-    "Empty10"
+    {
+      "text": "Общие вопросы",
+      "pageNumber": 1
+    },
+    {
+      "text": "Маршрут",
+      "pageNumber": 2
+    },
+    {
+      "text": "Проживание",
+      "pageNumber": 3
+    },
+    {
+      "text": "Питание",
+      "pageNumber": 4
+    },
+    {
+      "text": "Развлечения",
+      "pageNumber": 5
+    },
+    {
+      "text": "Empty",
+      "pageNumber": 6
+    }
   ]
 }

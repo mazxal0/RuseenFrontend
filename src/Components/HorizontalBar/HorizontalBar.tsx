@@ -4,6 +4,9 @@ import styles from './HorizontalBar.module.css'; // Ваш CSS для стиле
 
 import SectionsData from "../../DataAssets/Sections.Data.json";
 
+import surveyStore from "@/Store/SurveyStore";
+import Link from "next/link";
+
 const HorizontalBar: React.FC = () => {
     const scrollContainerRef = useRef<HTMLDivElement | null>(null);
 
@@ -51,6 +54,8 @@ const HorizontalBar: React.FC = () => {
         container.scrollLeft = scrollLeft - x;
     };
 
+
+
     return (
         <div
             className={styles.scrollContainer}
@@ -63,8 +68,14 @@ const HorizontalBar: React.FC = () => {
             onTouchMove={handleTouchMove}
         >
 
-            {SectionsData.names.map((text) => <div key={text} className={styles.scrollItem}>{text}</div>)}
-
+            {SectionsData.names.map(({text, pageNumber}) => (
+                <div
+                    onClick={() => surveyStore.setPage(pageNumber)}
+                    key={text}
+                    className={styles.scrollItem}>
+                    {text}
+                </div>
+            ))}
         </div>
     );
 };

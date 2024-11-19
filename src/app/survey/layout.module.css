@@ -1,21 +1,16 @@
-.header {
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: var(--background-primary);
-    height: 6vh;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-
 .text {
     margin-left: 15px;
 }
 
 .blue-text {
     color: var(--blue-color);
+}
+
+.page_title {
+    width: 100%;
+    text-align: center;
+    margin-left: 20px;
+    margin-top: 15px;
 }
 
 .topic {
@@ -25,10 +20,15 @@
 }
 
 .buttons_container {
-
     display: flex;
     justify-content: space-around;
     gap: 20px;
     margin: auto 20px 10px 20px;
+}
 
+@media (max-width: 480px) {
+    .page_title {
+        width: 100%;
+        text-align: start;
+    }
 }

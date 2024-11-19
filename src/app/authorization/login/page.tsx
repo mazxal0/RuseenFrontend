@@ -13,6 +13,8 @@ const Registration = () => {
     const router = useRouter();
 
     const [wrongData, setWrongData] = useState(false);
+    const [isError, setIsError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
 
     const [userData, setUserData] = useState<IUserData>({
         name: '',
@@ -25,6 +27,7 @@ const Registration = () => {
         const { name, value } = event.target;
         setUserData({ ...userData, [name]: value });
         setTimeout(() => setWrongData(false), 1000);
+        setTimeout(() => setIsError(false), 1000);
     }
 
     const sendUserData = async (event: React.FormEvent) => {
@@ -40,7 +43,15 @@ const Registration = () => {
                 router.push('/survey');
             }
         } catch (error) {
-            console.log(error);
+            if (axios.isAxiosError(error)){
+                if( error.response) {
+                    setIsError(true);
+                    setErrorMessage(error.response.data.message[0]);
+                    return;
+                }
+            } else {
+                console.log('Error');
+            }
         }
     }
 
@@ -52,12 +63,13 @@ const Registration = () => {
                 <Input placeholder={'Почта пользователя'} name={'email'} value={userData.email} onChange={inputUserData}/>
                 <Input placeholder={'Пароль'} name={'password'} value={userData.password} onChange={inputUserData}/>
                 {wrongData && <p className={cn(styles['text_wrong'])}>Неверный пароли и\или почта</p>}
+                {isError && <p className={cn(styles['text_wrong'])}>{errorMessage}</p>}
                 <br/>
                 <br/>
                 <br/>
                 <Button type={'submit'} isPrimary={true}>Войти</Button>
             </form>
-            <Button><Link href={'/authorization/registration'}>Зарегистрироваться</Link></Button>
+            <Link href={'/authorization/registration'}><Button>Зарегистрироваться</Button></Link>
         </div>
     )
 };

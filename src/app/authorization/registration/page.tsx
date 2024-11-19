@@ -14,6 +14,8 @@ const Registration = () => {
 
     const [isWrongPassword, setWrongPassword] = useState(false);
     const [isExistUser, setIsExistUser] = useState(false);
+    const [isError, setIsError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
 
     const [userData, setUserData] = useState<IUserData>({
         name: '',
@@ -27,12 +29,14 @@ const Registration = () => {
         setUserData({ ...userData, [name]: value });
         setTimeout(() => setWrongPassword(false), 1000);
         setTimeout(() => setIsExistUser(false), 1000);
+        setTimeout(() => setIsError(false), 1000);
     }
 
     const sendUserData = async (event: React.FormEvent) => {
         event.preventDefault();
         try {
             const response = await axios.post('http://localhost:5000/user/registration', userData);
+            console.log('data');
             if( response.data.message === 'Неверный пароль') {
                 setWrongPassword(true);
                 return;
@@ -45,7 +49,15 @@ const Registration = () => {
                 router.push('/survey');
             }
         } catch (error) {
-            console.log(error);
+            if (axios.isAxiosError(error)){
+                if( error.response) {
+                    setIsError(true);
+                    setErrorMessage(error.response.data.message[0]);
+                    return;
+                }
+            } else {
+                console.log(error);
+            }
         }
     }
 
@@ -60,12 +72,13 @@ const Registration = () => {
                 <Input placeholder={'Повторите пароль'} name={'secondPassword'} value={userData.secondPassword} onChange={inputUserData}/>
                 {isWrongPassword && <p className={cn(styles['text_wrong'])}>Неверный пароли и\или не совпадают</p>}
                 {isExistUser && <p className={cn(styles['text_wrong'])}>Пользователь с такой почтой уже сущетсвуют</p>}
+                {isError && <p className={cn(styles['text_wrong'])}>{errorMessage}</p>}
                 <br/>
                 <br/>
                 <br/>
                 <Button type={'submit'} isPrimary={true}>Зарегистрироваться</Button>
             </form>
-            <Button><Link href={'/authorization/login'}>Войти</Link></Button>
+            <Link href={'/authorization/login'}><Button>Войти</Button></Link>
         </div>
     )
 };
